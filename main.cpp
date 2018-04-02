@@ -9,10 +9,11 @@
 //menu
 int menu();
 //guardado de figuras
-void guardar(Figura*);
+void guardar(Figura**);
 
+void leer();
 //leer figura
-vector<Figura*> leer(Figura*);
+vector<Figura*> leer2();
 
 
 int main(){
@@ -37,13 +38,7 @@ int main(){
   while (opc1 != 4) {
     switch (opc1 = menu()) {
       case 1:{
-        ofstream file("archivoFiguras.txt", std::ios::out);
-        for (int i = 0; i < 10; i++) {
-          file<<"EL "<<array[i]->toString()<<"tiene area: "<<array[i]->getArea()<<endl;
-        }
-        cout<<"Se guardo exitosamente en el archivo de texto"<<endl;
-        file.close();
-
+        guardar(array);
         break;
       }
       case 2:{
@@ -57,50 +52,51 @@ int main(){
             d2 = new Double(ingrese2);
             cout<<"La suma de los doubles es de "<< *d1+*d2 <<endl;
             cout<<"La resta de los doubles es de "<< *d1-*d2 <<endl;
+            break;
           }
       case 3:{
-        //leer(array*);
+        leer2();
         break;
       }
       case 4:{
         //eliminacion de los apuntadores
-        delete *array;
+        for (int i = 0; i < 10; i++) {
+          delete *array;
+        }
         //delete d1;
-      //  delete d2;
+        //delete d2;
         break;
       }
     }
   }
 }
-vector<Figura*> leer(Figura* array){
+
+void leer(){
+
+}
+vector<Figura*> leer2(){
   vector<string> g;
-  ifstream file("archivoFiguras.txt", std::ios::in);
+  ifstream file("archivoFiguras.txt");
   if(file.is_open()) {
     while (!file.eof()) {
       string line;
       getline(file,line);
-      while (getline(file,line)) {
-        g.push_back(line);
-      }
+      g.push_back(line);
     }
   }
   file.close();
-  for (int i = 0; i < g.size(); i++) {
-    cout<<"La "<<g.at(i)<<endl;
+  for (int i = 1; i < g.size(); i++) {
+    cout<<g[i]<<endl;
   }
 }
 
-void guardar(Figura* array){
-  //ofstream file("archivoFiguras.txt", std::ios::out);
-  //if (file.is_open()) {
-    //for (int i = 0; i < sizeof(array); i++) {
-      //if (dynamic_cast<Figura*>(*array[i])){
-        //file<<"La "<<array[i].toString()<<" tiene area: "<<array[i].getArea()<<endl;
-    // }
-    //  file<<" ";
-    //}
-    //file.close();
-  //}
+void guardar(Figura** array){
+  ofstream file("archivoFiguras.txt", std::ios::out);
+  if (file.is_open()) {
+    for (int i = 0; i < 10; i++) {
+      file<<"EL "<<array[i]->toString()<<" tien area: "<<array[i]->getArea()<<";"<<endl;
+    }
+  }
 }
 int menu(){
   int flag = 0;
