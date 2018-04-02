@@ -80,7 +80,7 @@ vector<Figura*> leer2(){
   if(file.is_open()) {
     while (!file.eof()) {
       string line;
-      getline(file,line);
+      getline(file,line, ';');
       g.push_back(line);
     }
   }
@@ -94,7 +94,7 @@ void guardar(Figura** array){
   ofstream file("archivoFiguras.txt", std::ios::out);
   if (file.is_open()) {
     for (int i = 0; i < 10; i++) {
-      file<<"EL "<<array[i]->toString()<<" tien area: "<<array[i]->getArea()<<";"<<endl;
+      file<<"EL "<<array[i]->toString()<<" tiene area: "<<array[i]->getArea()<<";"<<endl;
     }
   }
 }
