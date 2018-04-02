@@ -9,8 +9,8 @@ class Cuadrado:public Figura{
 	public:
 		Cuadrado(double,double);
 		Cuadrado();
-		virtual double getArea();
-		virtual string toString();
+		double getArea();
+		string toString();
 };
 
 #endif

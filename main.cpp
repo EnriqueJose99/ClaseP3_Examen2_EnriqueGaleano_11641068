@@ -25,7 +25,7 @@ int main(){
   array [2] = new Cuadrado(9, 2);
   array [3] = new Circulo(8);
   array [4] = new Cuadrado(10, 10);
-  array [5] = new Circulo(2);
+  array [5] = new Circulo(17);
   array [6] = new Circulo(9);
   array [7] = new Circulo(5);
   array [8] = new Cuadrado(9, 2);
@@ -59,7 +59,7 @@ int main(){
             cout<<"La resta de los doubles es de "<< *d1-*d2 <<endl;
           }
       case 3:{
-
+        //leer(array*);
         break;
       }
       case 4:{
@@ -86,7 +86,7 @@ vector<Figura*> leer(Figura* array){
   }
   file.close();
   for (int i = 0; i < g.size(); i++) {
-    cout<<"La "<<g.at(i)->toString()<<endl;
+    cout<<"La "<<g.at(i)<<endl;
   }
 }
 
